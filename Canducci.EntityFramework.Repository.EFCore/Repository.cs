@@ -148,6 +148,8 @@ namespace Canducci.EntityFramework.Repository.EFCore
             return Query(select)
                 .OrderBy(orderBy);
         }
+
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
@@ -182,7 +184,6 @@ namespace Canducci.EntityFramework.Repository.EFCore
             GC.SuppressFinalize(this);
         }
 
-        
         #endregion
     }
 }

@@ -6,6 +6,8 @@ namespace Canducci.EntityFramework.Repository.EFCore.Mvc.Extensions
 {
     public static class Extension
     {
+
+        #region ToSelectListByRepository
         public static SelectList ToSelectList<T>(this IRepository<T> repository) where T : class
         {
             return ToSelectList(repository.Query());
@@ -30,7 +32,9 @@ namespace Canducci.EntityFramework.Repository.EFCore.Mvc.Extensions
         {
             return ToSelectList(repository.Query(), dataValueField, dataTextField, selectedValue, dataGroupField);
         }
+        #endregion
 
+        #region ToSelectListByIQueryable
         ////
 
         public static SelectList ToSelectList<T>(this IQueryable<T> query) where T : class
@@ -57,6 +61,7 @@ namespace Canducci.EntityFramework.Repository.EFCore.Mvc.Extensions
         {
             return new SelectList(query.ToList(), dataValueField, dataTextField, selectedValue, dataGroupField);
         }
+        #endregion
 
     }
 }

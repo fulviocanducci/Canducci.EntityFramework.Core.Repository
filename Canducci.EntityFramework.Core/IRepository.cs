@@ -35,6 +35,6 @@ namespace Canducci.EntityFramework.Repository.Core
 
         IQueryable<T> Query();
         IQueryable<TResult> Query<TResult>(Expression<Func<T, TResult>> select);
-        IQueryable<TResult> Query<TResult,Tkey>(Expression<Func<T, TResult>> select, Expression<Func<TResult, Tkey>> orderBy);
+        IQueryable<TResult> Query<TResult,Tkey>(Expression<Func<T, TResult>> select, Expression<Func<TResult, Tkey>> orderBy);        
     }
 }

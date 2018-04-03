@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using WebAppCore.Models;
 using System.Linq;
+using Canducci.EntityFramework.Repository.Core;
+using System;
+
 namespace WebAppCore.Controllers
 {
     public class PeoplesController : Controller
@@ -16,7 +19,10 @@ namespace WebAppCore.Controllers
         public ActionResult Index()
         {
 
-            var lista = Repository.Query(x => new { x.Id, x.Name }, o => o.Name).ToSelectList("Id", "Name");
+            var lista = Repository
+                .Query(s => new { s.Id, s.Name }, o => o.Name)
+                .ToSelectList("Id", "Name");
+
             ViewData["lista"] = lista;
 
             return View(Repository.Get(x => x.Name));
