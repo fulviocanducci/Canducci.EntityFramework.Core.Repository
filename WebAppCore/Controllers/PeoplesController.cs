@@ -18,9 +18,8 @@ namespace WebAppCore.Controllers
         
         public ActionResult Index()
         {
-
             var lista = Repository
-                .Query(s => new { s.Id, s.Name }, o => o.Name)
+                .Query(s => new { s.Id, s.Name }, o => o.Name, o => o.Id)                   
                 .ToSelectList("Id", "Name");
 
             ViewData["lista"] = lista;

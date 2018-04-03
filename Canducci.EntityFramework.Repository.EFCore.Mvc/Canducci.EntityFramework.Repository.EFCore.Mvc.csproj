@@ -72,7 +72,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc">
       <Version>1.1.7</Version>
-    </PackageReference>
+    </PackageReference>    
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
@@ -81,7 +81,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc">
       <Version>2.0.3</Version>
-    </PackageReference>
+    </PackageReference>    
   </ItemGroup>
 
   <ItemGroup>

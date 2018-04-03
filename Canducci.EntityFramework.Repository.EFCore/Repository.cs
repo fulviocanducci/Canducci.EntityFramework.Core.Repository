@@ -138,15 +138,24 @@ namespace Canducci.EntityFramework.Repository.EFCore
         {            
             return Model.AsNoTracking().AsQueryable();
         }
+
         public IQueryable<TResult> Query<TResult>(Expression<Func<T, TResult>> select)
         {
-            return Query()
-                .Select(select);
+            return Query().Select(select);
         }
-        public IQueryable<TResult> Query<TResult, Tkey>(Expression<Func<T, TResult>> select, Expression<Func<TResult, Tkey>> orderBy)
-        {
-            return Query(select)
-                .OrderBy(orderBy);
+
+        public IQueryable<TResult> Query<TResult>(Expression<Func<T, TResult>> select, params Expression<Func<TResult, object>>[] order)
+        {            
+            if (order.Count() > 0)
+            {
+                IOrderedQueryable<TResult> query = Query(select).OrderBy(order[0]);
+                for (int i = 1; i < order.Count();i++)
+                {
+                    query = query.ThenBy(order[i]);
+                }
+                return query;
+            }
+            return Query(select);
         }
 
 
